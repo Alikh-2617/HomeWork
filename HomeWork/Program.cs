@@ -53,21 +53,10 @@ namespace HomeWork
         {
             Console.Write("svart är :");
             Console.WriteLine(svar);
-            Console.WriteLine("vill du försätta ??");
-            Console.Write("1 ja // 2 nej : ");
-            int svar2 = Convert.ToInt32(Console.ReadLine());
-            if(svar2== 1)
-            {
-                menu();   
-            }
-            else
-            {
-                return;
-            }
         }
         static bool slutaEllerForstatta()
         {
-            Console.WriteLine("fel val , vill du försöka igen ? ");
+            Console.WriteLine("vill du fortsätta ?");
             Console.Write("1 ja / 2 nej : ");
             int svaret = Convert.ToInt32(Console.ReadLine());
             if (svaret == 1)
@@ -82,10 +71,11 @@ namespace HomeWork
         }
         static void menu()
         {
-            Console.Clear ();
+            
             bool runme = true;
             while (runme)
             {
+                Console.Clear();
                 Console.WriteLine("Hej till kalkylator .");
                 Console.WriteLine("välja vilken operator vill du använda ? ");
                 Console.WriteLine("1- for Addition .");
@@ -98,17 +88,21 @@ namespace HomeWork
                 {
                     case 1:
                         svar(addition());
+                        runme = slutaEllerForstatta();
                         break;
                     case 2:
                         svar(subtraktion());
+                        runme = slutaEllerForstatta();
                         break;
                     case 3:
                         svar(multiplikation());
+                        runme = slutaEllerForstatta();
                         break;
                     case 4:
                         svar(divition());
                         break;
                     default:
+                        Console.WriteLine("du angav fel val ! ");
                         runme = slutaEllerForstatta();
                         break;
 
