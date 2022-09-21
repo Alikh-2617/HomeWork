@@ -75,8 +75,8 @@ namespace HomeWork
             int m;
             int m2;
             Console.Clear();
-            Console.WriteLine("nu kom du till divition dividera ihop.");
-            Console.WriteLine("nu få du skriva två nummer för att subtrahera  : ");
+            Console.WriteLine("nu kom du till divition metoden.");
+            Console.WriteLine("nu få du skriva två nummer för att dividera ihop  : ");
             Console.Write("första nummer : ");
             var number1 = Console.ReadLine();
             if (int.TryParse(number1, out m))
@@ -145,6 +145,12 @@ namespace HomeWork
                 Console.WriteLine("2- for Subtraktion .");
                 Console.WriteLine("3- for Multiplikation .");
                 Console.WriteLine("4- for Divition .");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("-----------------------------------------------");
+                Console.WriteLine("5- loga ut ");
+                Console.WriteLine("6- avsluta .");
                 Console.Write("vilken operator : ");
                 var operators = Console.ReadLine();
                 int koretkt; 
@@ -172,6 +178,12 @@ namespace HomeWork
                         svar(divition());
                         runme = slutaEllerForstatta();
                         break;
+                    case 5:
+                        identifiering();
+                        break;
+                    case 6:
+                        runme = slutaEllerForstatta();
+                        break;
                     default:
                         Console.WriteLine("du angav fel val ! ");
                         runme = slutaEllerForstatta();
@@ -182,9 +194,132 @@ namespace HomeWork
             }
 
         }
+        static List<string> users = new List<string>();
+        static void skapaKonto()
+        {
+            bool runme = true;
+            Console.Clear();
+            Console.WriteLine("Hej du behöber ger en user name för att skapa konto !");
+            while (runme)
+            {
+                Console.Write("user name : ");
+                var username = Console.ReadLine();
+                if (username is not null)
+                {
+                    users.Add(username);
+                    Console.WriteLine("vi har skapat ett konto för dig .");
+                    Console.WriteLine("tryck inter tills komma till kontot .");
+                    Console.ReadLine();
+                    menu();
+                    runme=false;
+                }
+                else
+                {
+                    Console.WriteLine("Ej korekt form user name.");
+                    runme = slutaEllerForstatta();
+                }
+            }
+
+        }
+        static void login()
+        {
+            Console.Write("skrev din user name : ");
+            var username = Console.ReadLine();
+            if (username is not null)
+            {
+                foreach (var item in users)
+                {
+                    if (item.Contains(username))
+                    {
+                        Console.WriteLine(item);
+                        menu();
+                        break;
+                    }
+                }
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("vi har inte hittat ditt konoto . ");
+                Console.WriteLine("vill du skapa ett istället ? eller avsluta ");
+                Console.WriteLine("1 skapa ett konto / 2 för avsluta .");
+                var svar = Console.ReadLine();
+                int svaret;
+                if (int.TryParse(svar, out svaret))
+                {
+                    svaret = Convert.ToInt32(svar);
+                    if(svaret ==1)
+                    {
+                        skapaKonto();
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("tryck inter för att avsluta programmet !");
+                        Console.ReadLine();
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("fel form försök igen.");
+                    
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("fel user name form.");
+
+
+            }
+        }
+
+
+        static void identifiering()
+        {
+            int svaret;
+            bool rumme = true;
+            while (rumme) {
+                Console.Clear();
+                Console.WriteLine("Hej du har kommit till kalkylator programmet .");
+                Console.WriteLine("har du ett kalkylator konto ? eller om du inte har, vill du skapa ett  ? ");
+                Console.WriteLine("1- jag har konoto och vill komma åt mitt konto.");
+                Console.WriteLine("2- jag har inte konto och vill skapa ett. ");
+                Console.WriteLine("3- avsluta . ");
+                Console.Write("svar : ");
+                var svar = Console.ReadLine();
+                if (int.TryParse(svar, out svaret))
+                {
+                    svaret = Convert.ToInt32(svar);
+                }
+                switch (svaret)
+                {
+                    case 1:
+                        login();
+                        rumme = false;
+                        break;
+                    case 2:
+                        skapaKonto();
+                        rumme = false;
+                        break;
+                    case 3:
+                        rumme= slutaEllerForstatta();
+                        break;
+                    default:
+                        Console.WriteLine("fel input.");
+                        rumme = slutaEllerForstatta();
+                        break;
+                }
+            }
+
+        }
+
+
+        
+
         static void Main(string[] args)
         {
-            menu();
+            identifiering();
         }
     }
 }
