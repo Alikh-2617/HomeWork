@@ -6,7 +6,7 @@ namespace HomeWork
     internal class Program
     {
 
-        static int addition()
+        static int Addition()
         {
             int m;
             int m2;
@@ -27,7 +27,7 @@ namespace HomeWork
             }
             return (m + m2);
         }
-        static int subtraktion()
+        static int Subtraktion()
         {
             int m;
             int m2;
@@ -48,13 +48,13 @@ namespace HomeWork
             }
             return (m - m2);
         }
-        static int multiplikation()
+        static int Multiplikation()
         {
             int m;
             int m2;
             Console.Clear();
             Console.WriteLine("nu kom du till multiplikation metoden.");
-            Console.WriteLine("nu få du skriva två nummer för att gånga ihop  : ");
+            Console.WriteLine("nu få du skriva två nummer för att multiplicera ihop  : ");
             Console.Write("första nummer : ");
             var number1 = Console.ReadLine();
             if (int.TryParse(number1, out m))
@@ -69,7 +69,7 @@ namespace HomeWork
             }
             return (m * m2);
         }
-        static int divition ()
+        static int Divition ()
         {
             int resultat ;
             int m;
@@ -103,12 +103,12 @@ namespace HomeWork
             }
             return (resultat);
         }
-        static void svar (int svar)
+        static void Svar (int svar)
         {
             Console.Write("svart är :");
             Console.WriteLine(svar);
         }
-        static bool slutaEllerForstatta()
+        static bool SlutaEllerForstatta()
         {
             int m;
             Console.WriteLine("vill du fortsätta ?");
@@ -163,30 +163,30 @@ namespace HomeWork
                 switch (koretkt)
                 {
                     case 1:
-                        svar(addition());
-                        runme = slutaEllerForstatta();
+                        Svar(Addition());
+                        runme = SlutaEllerForstatta();
                         break;
                     case 2:
-                        svar(subtraktion());
-                        runme = slutaEllerForstatta();
+                        Svar(Subtraktion());
+                        runme = SlutaEllerForstatta();
                         break;
                     case 3:
-                        svar(multiplikation());
-                        runme = slutaEllerForstatta();
+                        Svar(Multiplikation());
+                        runme = SlutaEllerForstatta();
                         break;
                     case 4:
-                        svar(divition());
-                        runme = slutaEllerForstatta();
+                        Svar(Divition());
+                        runme = SlutaEllerForstatta();
                         break;
                     case 5:
-                        identifiering();
+                        Identifiering();
                         break;
                     case 6:
-                        runme = slutaEllerForstatta();
+                        runme = SlutaEllerForstatta();
                         break;
                     default:
                         Console.WriteLine("du angav fel val ! ");
-                        runme = slutaEllerForstatta();
+                        runme = SlutaEllerForstatta();
                         break;
 
 
@@ -195,7 +195,7 @@ namespace HomeWork
 
         }
         static List<string> users = new List<string>();
-        static void skapaKonto()
+        static void SkapaKonto()
         {
             bool runme = true;
             Console.Clear();
@@ -216,12 +216,12 @@ namespace HomeWork
                 else
                 {
                     Console.WriteLine("Ej korekt form user name.");
-                    runme = slutaEllerForstatta();
+                    runme = SlutaEllerForstatta();
                 }
             }
 
         }
-        static void login()
+        static void Login()
         {
             Console.Write("skrev din user name : ");
             var username = Console.ReadLine();
@@ -232,7 +232,7 @@ namespace HomeWork
                     if (item.Contains(username))
                     {
                         Console.WriteLine(item);
-                        menu();
+                        Menu();
                         break;
                     }
                 }
@@ -249,7 +249,7 @@ namespace HomeWork
                     svaret = Convert.ToInt32(svar);
                     if(svaret ==1)
                     {
-                        skapaKonto();
+                        SkapaKonto();
                         
                     }
                     else
@@ -275,7 +275,7 @@ namespace HomeWork
         }
 
 
-        static void identifiering()
+        static void Identifiering()
         {
             int svaret;
             bool rumme = true;
@@ -295,19 +295,19 @@ namespace HomeWork
                 switch (svaret)
                 {
                     case 1:
-                        login();
+                        Login();
                         rumme = false;
                         break;
                     case 2:
-                        skapaKonto();
+                        SkapaKonto();
                         rumme = false;
                         break;
                     case 3:
-                        rumme= slutaEllerForstatta();
+                        rumme= SlutaEllerForstatta();
                         break;
                     default:
                         Console.WriteLine("fel input.");
-                        rumme = slutaEllerForstatta();
+                        rumme = SlutaEllerForstatta();
                         break;
                 }
             }
@@ -319,7 +319,7 @@ namespace HomeWork
 
         static void Main(string[] args)
         {
-            identifiering();
+            Identifiering();
         }
     }
 }
