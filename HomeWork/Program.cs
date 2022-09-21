@@ -110,10 +110,19 @@ namespace HomeWork
         }
         static bool slutaEllerForstatta()
         {
+            int m;
             Console.WriteLine("vill du fortsätta ?");
             Console.Write("1 ja / 2 nej : ");
-            int svaret = Convert.ToInt32(Console.ReadLine());
-            if (svaret == 1)
+
+            var svaret = Console.ReadLine();
+
+            if (int.TryParse(svaret, out m))
+            {
+                m = Convert.ToInt32(svaret);
+            }
+
+
+            if (m == 1)
             {
                 return true;
             }
