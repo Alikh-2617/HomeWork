@@ -132,7 +132,7 @@ namespace HomeWork
             }
 
         }
-        static void menu()
+        static void Menu()
         {
             
             bool runme = true;
@@ -210,7 +210,7 @@ namespace HomeWork
                     Console.WriteLine("vi har skapat ett konto för dig .");
                     Console.WriteLine("tryck inter tills komma till kontot .");
                     Console.ReadLine();
-                    menu();
+                    Menu();
                     runme=false;
                 }
                 else
