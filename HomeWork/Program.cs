@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Linq.Expressions;
 
 namespace HomeWork
 {
@@ -7,47 +8,100 @@ namespace HomeWork
 
         static int addition()
         {
+            int m;
+            int m2;
             Console.Clear();
             Console.WriteLine("nu kom du till addition metoden.");
             Console.WriteLine("nu få du skriva två nummer för att addera ihop : ");
             Console.Write("första nummer : ");
-            int m = Convert.ToInt32(Console.ReadLine());
+            var number1 = Console.ReadLine();
+            if (int.TryParse(number1, out m))
+            {
+                m = Convert.ToInt32(number1);
+            }
             Console.Write("andra nummer : ");
-            int m2 = Convert.ToInt32(Console.ReadLine());
+            var number2 = Console.ReadLine();
+            if (int.TryParse(number1, out m2))
+            {
+                m2 = Convert.ToInt32(number2);
+            }
             return (m + m2);
         }
         static int subtraktion()
         {
+            int m;
+            int m2;
             Console.Clear();
             Console.WriteLine("nu kom du till subtraktion metoden.");
             Console.WriteLine("nu få du skriva två nummer för att subtrahera ihop : ");
             Console.Write("första nummer : ");
-            int m = Convert.ToInt32(Console.ReadLine());
+            var number1 = Console.ReadLine();
+            if (int.TryParse(number1, out m))
+            {
+                m = Convert.ToInt32(number1);
+            }
             Console.Write("andra nummer : ");
-            int m2 = Convert.ToInt32(Console.ReadLine());
+            var number2 = Console.ReadLine();
+            if (int.TryParse(number1, out m2))
+            {
+                m2 = Convert.ToInt32(number2);
+            }
             return (m - m2);
         }
         static int multiplikation()
         {
+            int m;
+            int m2;
             Console.Clear();
             Console.WriteLine("nu kom du till multiplikation metoden.");
             Console.WriteLine("nu få du skriva två nummer för att gånga ihop  : ");
             Console.Write("första nummer : ");
-            int m = Convert.ToInt32(Console.ReadLine());
+            var number1 = Console.ReadLine();
+            if (int.TryParse(number1, out m))
+            {
+                m = Convert.ToInt32(number1);
+            }
             Console.Write("andra nummer : ");
-            int m2 = Convert.ToInt32(Console.ReadLine());
+            var number2 = Console.ReadLine();
+            if (int.TryParse(number1, out m2))
+            {
+                m2 = Convert.ToInt32(number2);
+            }
             return (m * m2);
         }
         static int divition ()
         {
+            int resultat ;
+            int m;
+            int m2;
             Console.Clear();
             Console.WriteLine("nu kom du till divition dividera ihop.");
             Console.WriteLine("nu få du skriva två nummer för att subtrahera  : ");
             Console.Write("första nummer : ");
-            int m = Convert.ToInt32(Console.ReadLine());
+            var number1 = Console.ReadLine();
+            if (int.TryParse(number1, out m))
+            {
+                m = Convert.ToInt32(number1);
+            }
             Console.Write("andra nummer : ");
-            int m2 = Convert.ToInt32(Console.ReadLine());
-            return (m / m2);
+            var number2 = Console.ReadLine();
+            if (int.TryParse(number1, out m2))
+            {
+                m2 = Convert.ToInt32(number2);
+            }
+            try
+            {
+                resultat = m / m2;
+            }
+            catch(DivideByZeroException)
+            {
+                return 0 ;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return (resultat);
         }
         static void svar (int svar)
         {
@@ -82,9 +136,16 @@ namespace HomeWork
                 Console.WriteLine("2- for Subtraktion .");
                 Console.WriteLine("3- for Multiplikation .");
                 Console.WriteLine("4- for Divition .");
-                int operators = Convert.ToInt32(Console.ReadLine());
+                Console.Write("vilken operator : ");
+                var operators = Console.ReadLine();
+                int koretkt; 
+                if (int.TryParse(operators, out koretkt))
+                {
+                    koretkt = Convert.ToInt32(operators);
+                }
+                
 
-                switch (operators)
+                switch (koretkt)
                 {
                     case 1:
                         svar(addition());
@@ -100,6 +161,7 @@ namespace HomeWork
                         break;
                     case 4:
                         svar(divition());
+                        runme = slutaEllerForstatta();
                         break;
                     default:
                         Console.WriteLine("du angav fel val ! ");
