@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace HomeWork
 {
-    internal class Program
+   internal class Program
     {
 
         static int Addition()
@@ -69,9 +69,9 @@ namespace HomeWork
             }
             return (m * m2);
         }
-        static int Divition ()
+        static int Divition()
         {
-            int resultat ;
+            int resultat;
             int m;
             int m2;
             Console.Clear();
@@ -93,9 +93,9 @@ namespace HomeWork
             {
                 resultat = m / m2;
             }
-            catch(DivideByZeroException)
+            catch (DivideByZeroException)
             {
-                return 0 ;
+                return 0;
             }
             catch (Exception)
             {
@@ -103,7 +103,7 @@ namespace HomeWork
             }
             return (resultat);
         }
-        static void Svar (int svar)
+        static void Svar(int svar)
         {
             Console.Write("svart är :");
             Console.WriteLine(svar);
@@ -111,30 +111,42 @@ namespace HomeWork
         static bool SlutaEllerForstatta()
         {
             int m;
-            Console.WriteLine("vill du fortsätta ?");
-            Console.Write("1 ja / 2 nej : ");
-
-            var svaret = Console.ReadLine();
-
-            if (int.TryParse(svaret, out m))
+            bool me = true;
+            bool runme = true;
+            while (runme)
             {
-                m = Convert.ToInt32(svaret);
-            }
+                Console.WriteLine("vill du fortsätta ?");
+                Console.Write("1 ja / 2 nej : ");
+                var svaret = Console.ReadLine();
+                if (int.TryParse(svaret, out m))
+                {
+                    m = Convert.ToInt32(svaret);
+                }
+                else
+                {
+                    Console.WriteLine("Ej korekt form av val.");
+                    Console.WriteLine("tryck inter att köra om !");
+                    Console.ReadLine();
+                }
 
 
-            if (m == 1)
-            {
-                return true;
+                if (m == 1)
+                {
+                    me=  true;
+                    break;
+                }
+                else if (m == 2)
+                {
+                    me = false;
+                    break;
+                }
             }
-            else
-            {
-                return false;
-            }
+            return me;
 
         }
         static void Menu()
         {
-            
+
             bool runme = true;
             while (runme)
             {
@@ -153,12 +165,12 @@ namespace HomeWork
                 Console.WriteLine("6- avsluta .");
                 Console.Write("vilken operator : ");
                 var operators = Console.ReadLine();
-                int koretkt; 
+                int koretkt;
                 if (int.TryParse(operators, out koretkt))
                 {
                     koretkt = Convert.ToInt32(operators);
                 }
-                
+
 
                 switch (koretkt)
                 {
@@ -211,12 +223,14 @@ namespace HomeWork
                     Console.WriteLine("tryck inter tills komma till kontot .");
                     Console.ReadLine();
                     Menu();
-                    runme=false;
+                    runme = false;
+                    break;
                 }
                 else
                 {
                     Console.WriteLine("Ej korekt form user name.");
                     runme = SlutaEllerForstatta();
+                    break;
                 }
             }
 
@@ -247,10 +261,10 @@ namespace HomeWork
                 if (int.TryParse(svar, out svaret))
                 {
                     svaret = Convert.ToInt32(svar);
-                    if(svaret ==1)
+                    if (svaret == 1)
                     {
                         SkapaKonto();
-                        
+
                     }
                     else
                     {
@@ -262,7 +276,27 @@ namespace HomeWork
                 else
                 {
                     Console.WriteLine("fel form försök igen.");
-                    
+                    Console.WriteLine("vill du köra om eller avsluta programmet !");
+                    Console.WriteLine("1 vill förtsätta programmet / 2 för avsluta programmet .");
+                    Console.Write("svar : ");
+                    var svar2 = Console.ReadLine();
+                    int svaret2;
+                    if(int.TryParse(svar2, out svaret2))
+                    {
+                        svaret2 = Convert.ToInt32(svar2);
+                        if(svaret2 == 1)
+                        {
+                            Login();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("inte korekt form av svar.");
+                        Console.WriteLine("tryck inter för att avsluta programmet !");
+                        Console.ReadLine();
+                    }
+
+
                 }
 
             }
@@ -279,7 +313,8 @@ namespace HomeWork
         {
             int svaret;
             bool rumme = true;
-            while (rumme) {
+            while (rumme)
+            {
                 Console.Clear();
                 Console.WriteLine("Hej du har kommit till kalkylator programmet .");
                 Console.WriteLine("har du ett kalkylator konto ? eller om du inte har, vill du skapa ett  ? ");
@@ -292,6 +327,16 @@ namespace HomeWork
                 {
                     svaret = Convert.ToInt32(svar);
                 }
+                else
+                {
+                    Console.WriteLine("fel form av svar .");
+                    rumme = SlutaEllerForstatta();
+                    if (rumme == true)
+                    {
+                        Identifiering();
+                    }
+                    break;
+                }
                 switch (svaret)
                 {
                     case 1:
@@ -303,10 +348,10 @@ namespace HomeWork
                         rumme = false;
                         break;
                     case 3:
-                        rumme= SlutaEllerForstatta();
+                        rumme = SlutaEllerForstatta();
                         break;
                     default:
-                        Console.WriteLine("fel input.");
+                        Console.WriteLine("fel val.");
                         rumme = SlutaEllerForstatta();
                         break;
                 }
@@ -315,7 +360,7 @@ namespace HomeWork
         }
 
 
-        
+
 
         static void Main(string[] args)
         {
